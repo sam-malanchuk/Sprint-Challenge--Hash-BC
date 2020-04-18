@@ -72,7 +72,7 @@ def hash_table_retrieve(hash_table, key):
 
     while current_pair is not None:
         if(current_pair.key == key):
-            return current_pair.value
+            return current_pair
         current_pair = current_pair.next
 
 
