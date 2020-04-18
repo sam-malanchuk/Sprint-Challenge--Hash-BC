@@ -23,13 +23,22 @@ This sprint challenge is divided up into three parts:  Hash tables coding, block
 ## Interview Questions
 
 Explain in detail the workings of a dynamic array:
-* What is the runtime complexity to access an array, add or remove from the front, and add or remove from the back?
-* What is the worse case scenario if you try to extend the storage size of a dynamic array?
+#### * What is the runtime complexity to access an array, add or remove from the front, and add or remove from the back?
 
-Explain how a blockchain is structured. What are the blocks, what is the chain? How is the data organized?
+To get a new value into a dynamic array from the front you have to check to see that there is space in the back and move the whole array over one causing a O(n) operation. When you need to add a value in the back you can just add it if there is room with a simple O(1) operation as you have the length and know exactly where to place it. If you know the index of the value you need you can retrieve it with an O(1) operation. Removing a value from the array will cause the following values to be moved up. Assuming that an average of the middle of the array then this would result in an O(log n) operation and worst case O(n).
+
+#### * What is the worse case scenario if you try to extend the storage size of a dynamic array?
+
+When the memory array needs to be resized this causes for a new slot in memory to be reserved for it and all the values copied over, resulting in a O(n) operation.
+
+#### Explain how a blockchain is structured. What are the blocks, what is the chain? How is the data organized?
+
+A blockchain is a single linked list of blocks. Each block contains information about itself like a timestamp to records when the block was created, index to keep count of the block's position in the blockchain, transactions to keep track of coins sent from users during this time, proof to generate the blocks secure and difficult to fake hash, and the hash of the previous block.
+
+#### Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
+
+The blockchain proof of work allows miners to use thier processing power over a long period of time for a set proof difficulty looking for the proof. The proof does not have a simple calculation that can figure it out so it must be a guess and check algorithm. One the miner client finds a suitable proof meeting the blockchain guidelines it shows the chain, if the chain find the proof to work it hashes the block with the proof moving on to the next block. The hash of the block is placed in the body of the next block causing an unbreakable chain. An attacker might try to fake a proof or hash to change some contents of a block but they would have to go back and change the hash of the block after it too. If they are working on the newest block in the chain they would require at least 50% of all the current mining power to beat the others to getting the proof and providing false information. 
  
-Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
-
 ## Project Set Up
 
 #### [Hash Tables]
