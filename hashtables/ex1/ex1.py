@@ -12,6 +12,7 @@ def get_indices_of_item_weights(weights, length, limit):
 
     # add all the weights and their indexs to the hash table
     for index, weight in enumerate(weights):
+        print(index, weight)
         hash_table_insert(ht, weight, index)
 
     # for every index in the hash table
@@ -65,8 +66,8 @@ def print_answer(answer):
 # Then pulling out first to last every value from the hash table check if there is a second
 # value that can help reach it's sum. When found return the index of the two values.
 
-# weights_2 = [4, 4]
-# answer_2 = get_indices_of_item_weights(weights_2, 2, 8)
+weights_2 = [4, 4, 4]
+answer_2 = get_indices_of_item_weights(weights_2, 2, 8)
 
 # weights_3 = [4, 6, 10, 15, 16]
 # answer_3 = get_indices_of_item_weights(weights_3, 5, 21)
