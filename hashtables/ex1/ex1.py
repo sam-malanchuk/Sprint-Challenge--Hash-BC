@@ -10,49 +10,17 @@ def get_indices_of_item_weights(weights, length, limit):
     # Create the hash table
     ht = HashTable(16)
 
-    # add all the weights and their indexs to the hash table
+    # go over array
     for index, weight in enumerate(weights):
-        print(index, weight)
-        hash_table_insert(ht, weight, index)
-
-    # for every index in the hash table
-    for i in range(ht.capacity):
-        linkedPair = ht.storage[i]
-        # if the value is not empty
-        if linkedPair is not None:
-            # if the value is a linked pair with more than one
-            if linkedPair.next is not None:
-                first_pair = linkedPair
-                while first_pair is not None:
-                    # sum minus current values equals value that needs to exist to make sum
-                    difference = limit - first_pair.key
-                    # grab the pair if exists
-                    second_pair = hash_table_retrieve(ht, difference)
-                    # if it does exist, then we can return it
-                    if second_pair is not None:
-                        if first_pair.value > second_pair.value:
-                            print(first_pair.value, second_pair.value)
-                            return (first_pair.value, second_pair.value)
-                        else:
-                            print(second_pair.value, first_pair.value)
-                            return (second_pair.value, first_pair.value)
-                    first_pair = first_pair.next
-            # if there is just one in the linkedPair at index
-            else:
-                first_pair = linkedPair
-                # sum minus current values equals value that needs to exist to make sum
-                difference = limit - first_pair.key
-                # grab the pair if exists
-                second_pair = hash_table_retrieve(ht, difference)
-                # if it does exist, then we can return it
-                if second_pair is not None:
-                    if first_pair.value > second_pair.value:
-                        print(first_pair.value, second_pair.value)
-                        return (first_pair.value, second_pair.value)
-                    else:
-                        print(second_pair.value, first_pair.value)
-                        return (second_pair.value, first_pair.value)
-
+        # see if the total - current exists in the array already
+        x = hash_table_retrieve(ht, limit - weight)
+        # if it does then return the current and the one found
+        if x is not None:
+            return (index, x)
+        # if it does not then add the current to the hashtable 
+        else:
+            hash_table_insert(ht, weight, index)
+    # if no match found by the end, return None
     return None
 
 def print_answer(answer):
@@ -66,8 +34,8 @@ def print_answer(answer):
 # Then pulling out first to last every value from the hash table check if there is a second
 # value that can help reach it's sum. When found return the index of the two values.
 
-weights_2 = [4, 4, 4]
-answer_2 = get_indices_of_item_weights(weights_2, 2, 8)
+# weights_2 = [4, 4, 4]
+# answer_2 = get_indices_of_item_weights(weights_2, 2, 8)
 
 # weights_3 = [4, 6, 10, 15, 16]
 # answer_3 = get_indices_of_item_weights(weights_3, 5, 21)
