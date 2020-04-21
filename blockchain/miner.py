@@ -19,6 +19,10 @@ def proof_of_work(last_proof):
     - p is the previous proof, and p' is the new proof
     - Use the same method to generate SHA-256 hashes as the examples in class
     """
+    # convert the incoming proof to a string and get the last 5 digits
+    last_proof_five = int(str(last_proof)[-5:])
+
+    print(f'last 5 of previous proof was {last_proof_five}')
 
     start = timer()
 

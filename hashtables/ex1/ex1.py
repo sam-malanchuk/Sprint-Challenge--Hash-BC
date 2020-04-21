@@ -31,10 +31,10 @@ def get_indices_of_item_weights(weights, length, limit):
                     # if it does exist, then we can return it
                     if second_pair is not None:
                         if first_pair.value > second_pair.value:
-                            print(first_pair.value, second_pair.value)
+                            # print(first_pair.value, second_pair.value)
                             return (first_pair.value, second_pair.value)
                         else:
-                            print(second_pair.value, first_pair.value)
+                            # print(second_pair.value, first_pair.value)
                             return (second_pair.value, first_pair.value)
                     first_pair = first_pair.next
             # if there is just one in the linkedPair at index
@@ -47,10 +47,10 @@ def get_indices_of_item_weights(weights, length, limit):
                 # if it does exist, then we can return it
                 if second_pair is not None:
                     if first_pair.value > second_pair.value:
-                        print(first_pair.value, second_pair.value)
+                        # print(first_pair.value, second_pair.value)
                         return (first_pair.value, second_pair.value)
                     else:
-                        print(second_pair.value, first_pair.value)
+                        # print(second_pair.value, first_pair.value)
                         return (second_pair.value, first_pair.value)
 
     return None
@@ -66,8 +66,8 @@ def print_answer(answer):
 # Then pulling out first to last every value from the hash table check if there is a second
 # value that can help reach it's sum. When found return the index of the two values.
 
-weights_2 = [4, 4, 4]
-answer_2 = get_indices_of_item_weights(weights_2, 2, 8)
+# weights_2 = [4, 4, 4]
+# answer_2 = get_indices_of_item_weights(weights_2, 2, 8)
 
 # weights_3 = [4, 6, 10, 15, 16]
 # answer_3 = get_indices_of_item_weights(weights_3, 5, 21)
